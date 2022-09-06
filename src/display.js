@@ -2,7 +2,6 @@ import chalk from "chalk"
 import { isMovie } from './helpers.js'
 const hr = '-'.repeat(process.stdout.columns)
 
-
 // display the popular people
 const displayPopular = (data) => {
   data.results.map(item => {
@@ -59,12 +58,48 @@ const displayPerson = (data) => {
 
 // display movies
 const displayMovies = (data) => {
-  console.log(data)
+  data.results.map(item => {
+    const date = new Date(item.release_date);
+    const month = date.toLocaleString('default', { month: 'long' });
+
+    console.log(chalk.white(`\n${hr}\n`));
+    console.log(chalk.white('Movie:\n'));
+    console.log(chalk.white(`ID: ${data.id}`));
+    console.log(`${chalk.bold.white('Title:')} ${chalk.bold.blueBright(item.title)}`);
+    console.log(chalk.white(`Released on: ${month} ${date.getDate()}, ${date.getFullYear()}\n`));
+    console.log('\n');
+  })
+  
 }
 
 // display single movie from search by id
 const displayMovie = (data) => {
-  console.log(data)
+  const date = new Date(data.release_date);
+  const month = date.toLocaleString('default', { month: 'long' });
+
+  console.log(chalk.white(`\n${hr}\n`));
+  console.log(chalk.white('Movie:\n'));
+  console.log(chalk.white(`ID: ${data.id}`));
+  console.log(`${chalk.bold.white('Title:')} ${chalk.bold.blueBright(data.title)}`);
+  console.log(`${chalk.white('Released on:')} ${month} ${date.getDate()}, ${date.getFullYear()}`);
+  console.log(chalk.white(`Runtime: ${data.runtime} minutes`));
+  console.log(chalk.white(`Votes: ${data.vote_count}`));
+  console.log(chalk.white(`Overview: ${data.overview}\n`));
+
+  if (data.genres.length > 0) {
+    let genreList = [];
+    let genres = data.genres;
+    for (let genre of genres) {
+      genreList.push(genre.name);
+    }     
+    console.log(`${chalk.white('Genres:')} ${chalk.yellow(genreList.join(', '))}`);
+  } else {
+    console.log(`${chalk.white('Genres:')} ${chalk.cyanBright(data.title)} does not have a declared genre \n`)
+  }
+  
+  console.log('\n\n');
+  
+
 }
 
 

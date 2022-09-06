@@ -6,8 +6,6 @@ import { displayPerson, displayPopular, displayMovie, displayMovies, displayFoot
 
 const fetchData = (helpers) => {
   const [url, params] = [helpers.url, helpers.params];
-  console.log(url)
-  console.log(params)
  
   https.get(url, res => {
     spinner.start(params.spinner.startMsg);
@@ -21,7 +19,6 @@ const fetchData = (helpers) => {
       const fetchedData = JSON.parse(Buffer.concat(data).toString());
       console.log(fetchedData)
       const [page, pageTot] = [fetchedData.page, fetchedData.total_pages]
-      
 
       setTimeout(() => {      
         spinner.color='white';

@@ -42,6 +42,7 @@ program.command('get-person')
 program.command('get-movie')
   .description('Make a network request to fetch the data of a single movie')
   .requiredOption('--id, -i <idNumber>', 'The id of the movie')
+  .option('--reviews, -r', 'Fetch the reviews for a specific movie')
   .action((options) => {
     fetchData(getHelpers(options, 'movie'))
   });
