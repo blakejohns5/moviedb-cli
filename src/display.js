@@ -3,20 +3,6 @@ import { isMovie } from './helpers.js'
 const hr = '-'.repeat(process.stdout.columns)
 
 
-// call the correct display function depending on the search params for the type of search
-const callDisplayFunction = (searchBy, data) => {
-  switch (searchBy) {
-    case 'id': 
-      showPopularPeople(data);
-      break;
-    case 'popular': 
-      showPerson(data);
-      break;
-    default: 
-      return;
-  }
-}
-
 // display the popular people
 const displayPopular = (data) => {
   data.results.map(item => {
