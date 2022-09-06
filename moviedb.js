@@ -3,12 +3,10 @@
 
 import * as dotenv from 'dotenv'
 dotenv.config()
-
 import { program } from 'commander';
+import ora from 'ora';
 
 import getPopularPeople from './src/apis.js'
-
-// const spinner = ora('Fetching data for popular people...')
 
 program
     .version('0.0.1')
@@ -19,6 +17,9 @@ program.command('get-people')
     .requiredOption('--popular, -p', 'Fetch the most popular people')
     .requiredOption('--page <number>', 'Specify the page of results to fetch')
     .action((options) => getPopularPeople(options));
+
+ 
+    
 
 
 program.parse(process.argv)
