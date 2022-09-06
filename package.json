@@ -1,0 +1,24 @@
+{
+  "name": "moviedb-cli",
+  "version": "0.0.1",
+  "description": "Film Database CLI Tool",
+  "main": "moviedb.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blakejohns5/moviedb-cli.git"
+  },
+  "author": "Blake Johnson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blakejohns5/moviedb-cli/issues"
+  },
+  "homepage": "https://github.com/blakejohns5/moviedb-cli#readme",
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "commander": "^9.4.0",
+    "ora": "^6.1.2"
+  }
+}
