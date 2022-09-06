@@ -1,4 +1,5 @@
 import ora from 'ora';
+import chalk from 'chalk';
 
 
 // FETCH HELPERS
@@ -14,17 +15,33 @@ const getHelpers = (options) => {
 }
 
 const getSearchParams = (options) => {
+  const msgFail = `Awww...bummer. No movie info for you.`;
+
   if (options.I) {
     return {
+      category: 'person',
       type: 'id',
       string:  `${options.I}`,
       page: "",
+      spinner: {
+        startMsg: `Loading ${chalk.magentaBright(`Let's find that person!\n\n`)}`,
+        spinMsg: `${chalk.blueBright(`Working on finding the person you are looking for...\n\n`)}`,
+        successMsg: `${chalk.white('Found it!')} ${chalk.green('Info retrieved for the person you were looking for!')}\n\n`,
+        failMsg: msgFail,
+      }
     }
   } else {
     return {
+      category: 'person',
       type: 'popular',
       string: 'popular',
       page: `&page=${options.page}`,
+      spinner: {
+        startMsg: `Loading ${chalk.magentaBright(`OK! Let's find some popular people!\n\n`)}`,
+        spinMsg: `${chalk.blueBright(`Working on finding popular people...\n\n`)}`,
+        successMsg: `${chalk.white('Wow!')} ${chalk.green('People and movie info retrieved!')}\n\n`,
+        failMsg: msgFail,
+      }
     }
   }
 }
@@ -49,13 +66,13 @@ const isMovie = (work) => {
 }
 
 
-// const boxenOpts = {
-//   titleAlignment: 'center',
-//   padding: 1,
-//   margin: 1, 
-//   borderStyle: 'double'
-// }
+const boxenOpts = {
+  titleAlignment: 'center',
+  padding: 1,
+  margin: 2, 
+  borderStyle: 'double'
+}
 
 
 
-export { getSearchParams, getUrl, getHelpers, spinner, isMovie };
+export { getSearchParams, getUrl, getHelpers, spinner, boxenOpts, isMovie };

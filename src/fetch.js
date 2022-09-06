@@ -1,18 +1,16 @@
 import https from 'node:https';
-import chalk from 'chalk'
 import { spinner } from './helpers.js'
 import { displayPerson, displayPopular, displayFooter } from './display.js'
-
 
 
 
 const fetchData = (helpers) => {
   const [url, params] = [helpers.url, helpers.params];
  
-  https.get(url, res => {  
-    spinner.start(`Loading ${chalk.magentaBright('Get ready for some movie info!\n\n')}`);
+  https.get(url, res => {
+    spinner.start(params.spinner.startMsg);
     
-    let data = [];      
+    let data = [];
     res.on('data', chunk => {
       data.push(chunk);
     });
@@ -23,8 +21,9 @@ const fetchData = (helpers) => {
       
 
       setTimeout(() => {      
-        spinner.color='white'          
-        spinner.succeed('Movie info retrieved!!')
+        spinner.color='white';
+        spinner.indent = 1          
+        spinner.succeed(params.spinner.successMsg)
         displayFooter(page, pageTot);  
       }, 500);
 
@@ -34,6 +33,7 @@ const fetchData = (helpers) => {
       
     }).on('error', err => {
       console.log('Error: ', err.message);
+      spinner.fail(params.spinner.failMsg)
     });    
   }) 
 }
@@ -51,9 +51,6 @@ const handleFetchedData = (data, params) => {
       return;
   }
 }
-
-
-
 
 
 export { fetchData };

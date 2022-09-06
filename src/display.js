@@ -9,7 +9,7 @@ const displayPopular = (data) => {
     console.log(chalk.white(`\nPerson: \n`));
     console.log(`ID: ${item.id}`);
     console.log(`Name: ${item.name}`);
-    item.known_for_department.toLowerCase() === 'acting' && console.log(`${chalk.white('Department:')} ${chalk.magenta(item.known_for_department)}`)
+    item.known_for_department.toLowerCase() === 'acting' && console.log(`${chalk.white('Department:')} ${chalk.magenta(item.known_for_department)}\n`)
 
     if (isMovie(item.known_for)) {
       item.known_for.map(item => {
@@ -43,7 +43,7 @@ const displayPerson = (data) => {
   console.log(chalk.white(`ID: ${data.id}`));
   console.log(`${chalk.bold.white('Name:')} ${chalk.bold.blueBright(data.name)}`);
   console.log(`${chalk.white('Birthday:')} ${fullBirthday} ${chalk.gray('|')} ${chalk.white(data.place_of_birth)} \n`);
-  data.known_for_department.toLowerCase() === 'acting' && console.log(`${chalk.white('Department:')} ${chalk.magenta(data.known_for_department)}`)
+  data.known_for_department.toLowerCase() === 'acting' && console.log(`${chalk.white('Department:')} ${chalk.magenta(data.known_for_department)} \n`)
   console.log(`${chalk.white('Biography:')} ${chalk.bold.blue(data.biography)} \n`);
   
   if (data.also_known_as) {
@@ -58,13 +58,11 @@ const displayPerson = (data) => {
 }
 
 
-
 const displayFooter = (pageNo, pageTot) => {
   if (pageNo && pageTot) {
     pageTot > pageNo && console.log(hr + '\n\n' + chalk.white(`Page: ${pageNo} of ${pageTot} \n`));
     console.log(hr)
   }
-  
 }
 
 
