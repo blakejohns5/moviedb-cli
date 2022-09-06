@@ -32,7 +32,7 @@ const displayPopular = (data) => {
   })
 }
 
-
+// display person by entering id
 const displayPerson = (data) => {
   const birthday = new Date(data.birthday);
   const month = birthday.toLocaleString('default', { month: 'long' });
@@ -57,7 +57,18 @@ const displayPerson = (data) => {
   }
 }
 
+// display movies
+const displayMovies = (data) => {
+  console.log(data)
+}
 
+// display single movie from search by id
+const displayMovie = (data) => {
+  console.log(data)
+}
+
+
+// footer added to final section of fetch block
 const displayFooter = (pageNo, pageTot) => {
   if (pageNo && pageTot) {
     pageTot > pageNo && console.log(hr + '\n\n' + chalk.white(`Page: ${pageNo} of ${pageTot} \n`));
@@ -66,4 +77,4 @@ const displayFooter = (pageNo, pageTot) => {
 }
 
 
-export { displayPerson, displayPopular, displayFooter };
+export { displayPerson, displayPopular, displayMovie, displayMovies, displayFooter };

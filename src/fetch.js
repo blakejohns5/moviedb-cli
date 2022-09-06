@@ -1,11 +1,13 @@
 import https from 'node:https';
 import { spinner } from './helpers.js'
-import { displayPerson, displayPopular, displayFooter } from './display.js'
+import { displayPerson, displayPopular, displayMovie, displayMovies, displayFooter } from './display.js'
 
 
 
 const fetchData = (helpers) => {
   const [url, params] = [helpers.url, helpers.params];
+  console.log(url)
+  console.log(params)
  
   https.get(url, res => {
     spinner.start(params.spinner.startMsg);
@@ -17,6 +19,7 @@ const fetchData = (helpers) => {
 
     res.on('end', () => {
       const fetchedData = JSON.parse(Buffer.concat(data).toString());
+      console.log(fetchedData)
       const [page, pageTot] = [fetchedData.page, fetchedData.total_pages]
       
 
@@ -40,12 +43,12 @@ const fetchData = (helpers) => {
 
 
 const handleFetchedData = (data, params) => {
-  switch (params.type) {
-    case 'id': 
-      displayPerson(data);
+  switch (params.category) {
+    case 'person':
+      params.type === 'id' ? displayPerson(data) : displayPopular(data);
       break;
-    case 'popular':
-      displayPopular(data);
+    case 'movie':
+      params.type === 'id' ? displayMovie(data) : displayMovies(data);
       break;
     default:
       return;
