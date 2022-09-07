@@ -17,7 +17,6 @@ const fetchData = (helpers) => {
 
     res.on('end', () => {
       const fetchedData = JSON.parse(Buffer.concat(data).toString());
-      console.log(fetchedData)
       const [page, pageTot] = [fetchedData.page, fetchedData.total_pages]
 
       setTimeout(() => {      

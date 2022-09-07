@@ -98,13 +98,5 @@ const isMovie = (work) => {
 }
 
 
-const boxenOpts = {
-  titleAlignment: 'center',
-  padding: 1,
-  margin: 2, 
-  borderStyle: 'double'
-}
-
-
 
 export { getSearchParams, getUrl, getHelpers, spinner, boxenOpts, isMovie };

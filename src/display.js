@@ -95,11 +95,8 @@ const displayMovie = (data) => {
     console.log(`${chalk.white('Genres:')} ${chalk.yellow(genreList.join(', '))}`);
   } else {
     console.log(`${chalk.white('Genres:')} ${chalk.cyanBright(data.title)} does not have a declared genre \n`)
-  }
-  
+  }  
   console.log('\n\n');
-  
-
 }
 
 
